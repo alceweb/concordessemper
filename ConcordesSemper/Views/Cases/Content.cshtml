@@ -1,0 +1,183 @@
+﻿@model ConcordesSemper.Models.Case
+
+@{
+    ViewBag.Title = "Content";
+}
+<div class="row">
+    <div class="col col-md-4"></div>
+    <div class="col col-md-4 text-center">
+        <div>
+            <img class="img-stemma" src="@Url.Content("~/Content/Immagini/" + @Model.Casa_Id + ".png")" />
+        </div>
+    </div>
+    <div class="col col-md-4"></div>
+</div>
+<hr class="hr1" />
+@*Punteggi di oggi*@
+<h4 class="text-center">@DateTime.Today.ToString("dddd dd MMMM yyyy") punti <strong class="h3">@ViewBag.PunteggioTotOggi</strong></h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Comp.
+                </th>
+                <th>
+                    Dim.
+                </th>
+                <th>
+                    Varie
+                </th>
+                <th>
+                    Giochi
+                </th>
+                <th>
+                    Ordine
+                </th>
+                <th></th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            @foreach (var item in ViewBag.PunteggioOggi)
+            {
+                <tr>
+                    <td>
+                        <span class="h6">@item.Insegnante<br/>
+                            <strong class="text-danger">@item.Data.ToString("HH:mm")</strong></span>
+                    </td>
+                    <td>
+                        @item.Comportamento
+                    </td>
+                    <td>
+                        @item.Dimenticanze
+                    </td>
+                    <td>
+                        @item.Varie 
+                        @if (@item.Varie > 0)
+                        {
+                            var va = @item.Punteggio_Id;
+                            
+                            <a href="#@va" data-toggle="modal" ><span class="fa fa-info-circle text-success"></span></a>
+                            <div id="@va" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h5>@item.Data.ToString("dddd dd MMMMM yyyy") sono stati assegnati @item.Varie punti da @item.Insegnante</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            Motivo:<h4>@item.Motivazione</h4>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        }
+                    </td>
+                    <td>
+                        @item.GrandiG
+                    </td>
+                    <td>
+                        @item.OeP
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                    {
+                            <a href="@Url.Action("Edit", "Punteggis", new {id = @item.Punteggio_Id})" class="fa fa-pencil-square fa-2x"></a>
+                            <a href="@Url.Action("Delete", "Punteggis", new {id = @item.Punteggio_Id})" class="fa fa-trash-o fa-2x text-danger"></a>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+
+
+    </table>
+
+@*Tutti i punteggi*@
+<a href="#tutti" class="btn btn-primary" data-toggle="collapse">Vedi tutti i punteggi <span class="fa fa-arrow-down"></span></a>
+<div id="tutti" class="collapse">
+    <h2 class="text-center">Tutti i punteggi dell'anno</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Comp.
+                </th>
+                <th>
+                    Dim.
+                </th>
+                <th>
+                    Varie
+                </th>
+                <th>
+                    Giochi
+                </th>
+                <th>
+                    Ordine
+                </th>
+                <th></th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            @foreach (var item in ViewBag.Punteggio)
+            {
+                <tr>
+                    <td >
+                        <span class="h6">@item.Insegnante</span> - <span class="text-primary h6">@item.Data.ToString("dd MMM yyyy") <strong>@item.Data.ToString("hh.mm")</strong></span>
+
+                    </td>
+                    <td>
+                        @item.Comportamento
+                    </td>
+                    <td>
+                        @item.Dimenticanze
+                    </td>
+                    <td>
+                        @item.Varie
+                    </td>
+                    <td>
+                        @item.GrandiG
+                    </td>
+                    <td>
+                        @item.OeP
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="@Url.Action("Edit", "Punteggis", new {id = @item.Punteggio_Id})" class="fa fa-pencil-square fa-2x"></a>
+                            <a href="@Url.Action("Delete", "Punteggis", new {id = @item.Punteggio_Id})" class="fa fa-trash-o fa-2x text-danger"></a>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+
+
+    </table>
+</div> 
+
+@section Scripts{
+
+@Scripts.Render("~/Scripts/jquery.filtertable.min.js")
+<script>
+    $(document).ready(function () {
+        $('table').filterTable();
+    });
+</script>
+
+
+    }

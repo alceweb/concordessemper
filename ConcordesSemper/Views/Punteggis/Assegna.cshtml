@@ -1,0 +1,139 @@
+﻿@model ConcordesSemper.Models.Punteggi
+
+@{
+    ViewBag.Title = "Assegna";
+}
+<div class="text-center">
+    <img class="img-stemma" src="@Url.Content("~/Content/Immagini/" + Request.QueryString["casa"] + ".png")" />
+
+</div>
+<h2 class="text-center">Assegna punti</h2>
+<h2 class="text-danger text-center">@ViewBag.Message</h2>
+<hr class="hr1" />
+ <h3 class="text-success text-center">Comportamento</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+//Comportamento
+<div class="row">
+    <div class="col-md-5 text-center">
+        <input class="btn btn-xlg btn-danger" id="Btn-C-3" type="button" value="-3" />
+        <input class="btn btn-xlg btn-danger" id="Btn-C-4" type="button" value="-4" />
+        <input class="btn btn-xlg btn-danger" id="Btn-C-5" type="button" value="-5" />
+
+    </div>
+    <div class="col-md-2 text-center">
+        <input id="Txt-C" name="Comportamento" class="form-control-c input-xlg text-center" type="text" value="0" />
+        <input id="Btn-C-X" class="btn btn-sm btn-warning" type="button" value="X" />
+    </div>
+    <div class="col-md-5 text-center">
+        <input class="btn btn-xlg btn-success" id="Btn-C3" type="button" value="+3" />
+        <input class="btn btn-xlg btn-success" id="Btn-C4" type="button" value="+4" />
+        <input class="btn btn-xlg btn-success" id="Btn-C5" type="button" value="+5" />
+    </div>
+</div>
+<hr class="hr1" />
+//Dimenticanze
+<h3 class="text-success text-center">Dimenticanze</h3>
+<div class="row">
+    <div class="col-md-5 text-center">
+        <input class="btn btn-xlg btn-danger" id="Btn-D-2" type="button" value="-2" />
+    </div>
+    <div class="col-md-2 text-center">
+        <input id="Txt-D" name="Dimenticanze" class="form-control-c input-xlg text-center" type="text"  value="0"  />
+        <input id="Btn-D-X" class="btn btn-warning" type="button" value="X" />
+    </div>
+    <div class="col-md-5 text-center">
+    </div>
+</div>
+    <hr class="hr1" />
+    //Grandi Giochi
+    <h3 class="text-success text-center">Grandi Giochi</h3>
+   <div class="row">
+        <div class="col-md-5 text-center">
+        </div>
+        <div class="col-md-2 text-center">
+            <input id="Txt-GG" name="GrandiG" class="form-control-c input-xlg text-center" type="text"  value="0" />
+            <input id="Btn-GG-X" class="btn btn-xs btn-warning" type="button" value="X" />
+        </div>
+        <div class="col-md-5 text-center">
+            <input class="btn btn-xlg btn-success" id="Btn-GG10" type="button" value="+10" />
+            <input class="btn btn-xlg btn-success" id="Btn-GG20" type="button" value="+20" />
+            <input class="btn btn-xlg btn-success" id="Btn-GG30" type="button" value="+30" />
+            <input class="btn btn-xlg btn-success" id="Btn-GG40" type="button" value="+40" />
+        </div>
+    </div>
+    <hr class="hr1" />
+    //Ordine e Pulizia
+    <h3 class="text-success text-center">Ordine e Pulizia</h3>
+    <div class="row">
+        <div class="col-md-5 text-center">
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-1" type="button" value="-1" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-2" type="button" value="-2" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-3" type="button" value="-3" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-4" type="button" value="-4" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-5" type="button" value="-5" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-6" type="button" value="-6" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-7" type="button" value="-7" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-8" type="button" value="-8" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-9" type="button" value="-9" />
+            <input class="btn btn-xlg btn-danger" id="Btn-OeP-10" type="button" value="-10" />
+        </div>
+        <div class="col-md-2 text-center">
+            <input id="Txt-OeP" name="OeP" class="form-control-c input-xlg text-center" type="text"  value="0" />
+            <input id="Btn-OeP-X" class="btn btn-xs btn-warning" type="button" value="X" />
+        </div>
+        <div class="col-md-5 text-center">
+            <input class="btn btn-xlg btn-success" id="Btn-OeP1" type="button" value="+1" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP2" type="button" value="+2" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP3" type="button" value="+3" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP4" type="button" value="+4" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP5" type="button" value="+5" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP6" type="button" value="+6" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP7" type="button" value="+7" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP8" type="button" value="+8" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP9" type="button" value="+9" />
+            <input class="btn btn-xlg btn-success" id="Btn-OeP10" type="button" value="+10" />
+        </div>
+    </div>
+
+    <hr class="hr1" />
+    //Manuale
+    <h3 class="text-success text-center">Manuale</h3>
+    <div class="row">
+        <div class="col-md-5 text-center">
+            <h3>
+                Inserisci manualmente i punti e la motivazione!
+            </h3>
+        </div>
+        <div class="col-md-2 text-center">
+            @Html.TextBoxFor(v=>v.Varie, new {id = "Txt-M", @class= "form-control-c input-xlg text-center", @Value="0" })
+            <input id="Btn-M-X" class="btn btn-xs btn-warning" type="button" value="X" />
+        </div>
+        <div class="col-md-5 text-center">
+            @Html.TextAreaFor(m => m.Motivazione, new { id="Txt-M-M" , @class= "form-control-c text-center", placeholder ="Motivo..."})
+            <input id="Btn-M-M-X" class="btn btn-xs btn-warning" type="button" value="X" />
+        </div>
+    </div>
+
+<hr />
+    <div class="text-center">
+        <h2>
+            <input id="Submit1" class="btn btn-xlg btn-primary" type="submit" value="Conferma" />
+
+        </h2>
+        <h2>
+            @Html.ActionLink("Annulla", "Index", "Home", null, new { @class = "btn btn-xlg btn-warning" })
+
+
+        </h2>
+    </div>
+}
+<hr class="hr1" />
+
+
+@section Scripts{
+    
+<script src="~/Scripts/jquery-assegna.js"></script>
+    }

@@ -1,0 +1,120 @@
+﻿@model IEnumerable<ConcordesSemper.Models.Case>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<table class="table table-responsive">
+    <tr>
+
+        @foreach (var item1 in ViewBag.AC)
+        {
+
+            foreach (var item in Model.GroupBy(a => a.Nome).
+                Select(a => new
+                {
+                    casa = a.Key,
+                    punti = a.Sum(p => p.Punteggis.Sum(s => s.Punti)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.Comportamento)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.Dimenticanze)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.Varie)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.GrandiG)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.OeP))
+                }).
+                Where(c => c.casa == item1.Nome).
+                OrderBy(o => o.punti))
+            {
+                <td class="text-center">
+
+                    @if (@item.punti == @ViewBag.Punti)
+                    {
+                        <a href="@Url.Action("Content", "Cases", new {id = @item1.Casa_Id})">
+                            <img class="img-responsive img-stemma-home" src="@Url.Content("~/Content/Immagini/" + @item1.Casa_Id + "W.png")" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Content", "Cases", new {id = @item1.Casa_Id})">
+                            <img class="img-responsive img-stemma-home" src="@Url.Content("~/Content/Immagini/" + @item1.Casa_Id + ".png")" />
+                        </a>
+                    }
+
+                        <div class="h2">
+                            <span class="txt-ombra">@item.punti</span>
+                            @if (User.IsInRole("Admin"))
+                            {
+
+                                <a href="@Url.Action("Assegna", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+
+                            }
+
+                            @if (User.IsInRole("Insegnante"))
+                            {
+
+                                <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                            }
+                        </div>
+
+                </td>                   
+
+            }
+        }
+
+    </tr>
+    <tr>
+
+        @foreach (var item1 in ViewBag.FF)
+        {
+
+            foreach (var item in Model.GroupBy(a => a.Nome).
+                Select(a => new
+                {
+                    casa = a.Key,
+                    punti = a.Sum(p => p.Punteggis.Sum(s => s.Punti)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.Comportamento)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.Dimenticanze)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.Varie)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.GrandiG)) +
+                a.Sum(p => p.Punteggis.Sum(s => s.OeP))
+                }).
+                Where(c => c.casa == item1.Nome).
+                OrderBy(o => o.punti))
+            {
+                <td class="text-center">
+
+                    @if (@item.punti == @ViewBag.Punti)
+                    {
+                        <a href="@Url.Action("Content", "Cases", new {id = @item1.Casa_Id})">
+                            <img class="img-responsive img-stemma-home"  src="@Url.Content("~/Content/Immagini/" + @item1.Casa_Id + "W.png")" />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Content", "Cases", new {id = @item1.Casa_Id})">
+                            <img class="img-responsive img-stemma-home" src="@Url.Content("~/Content/Immagini/" + @item1.Casa_Id + ".png")" />
+                        </a>
+                    }
+
+                    <div class="h2">
+                        <span class="txt-ombra">@item.punti</span>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="@Url.Action("Assegna", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                        }
+
+                        @if (User.IsInRole("Insegnante"))
+                        {
+
+                            <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                        }
+                    </div>
+                </td>
+
+            }
+        }
+
+    </tr>
+</table><hr class="hr1" />
+<div class="text-center">
+    <img class="img-responsive" src="~/Content/Immagini/ConcordesVert.png" />
+</div>

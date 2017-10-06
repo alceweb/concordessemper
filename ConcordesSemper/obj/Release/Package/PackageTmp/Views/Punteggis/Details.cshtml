@@ -1,0 +1,90 @@
+﻿@model ConcordesSemper.Models.Punteggi
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Punteggi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Model.Data.ToString("dd/MMM/yy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Punti)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Punti)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivazione)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivazione)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comportamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comportamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dimenticanze)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dimenticanze)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Varie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Varie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrandiG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrandiG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OeP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OeP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Punteggio_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
