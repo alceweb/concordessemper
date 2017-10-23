@@ -25,7 +25,12 @@ namespace ConcordesSemper.Models
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "User name")]
         public string UserName { get; set; }
-        
+        [Display(Name = "Casa")]
+        public int? Casa_Id { get; set; }
+        [Display(Name = ("Incarico"))]
+        public string Incarico { get; set; }
+
+
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
 

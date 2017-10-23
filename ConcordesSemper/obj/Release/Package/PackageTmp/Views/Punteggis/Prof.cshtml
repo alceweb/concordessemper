@@ -1,0 +1,144 @@
+﻿@model IEnumerable<ConcordesSemper.Models.Punteggi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">I punteggi di @Request["username"]</h2>
+<hr class="hr1" />
+<h4 class="label label-warning">Totali divisi per casa</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.Comportamento)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.Dimenticanze)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.GrandiG)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.OeP)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.Varie)
+            </th>
+        </tr>
+
+    </thead>
+
+    @foreach (var item in Model.GroupBy(p=>p.Nome.Nome).Select(p=> new { casa = p.Key, comportamento = p.Sum(c=>c.Comportamento), dimenticanze = p.Sum(d=>d.Dimenticanze), grandiG = p.Sum(g=>g.GrandiG), ordine = p.Sum(o=>o.OeP), varie = p.Sum(v=>v.Varie)}))
+    {
+        <tbody>
+
+            <tr>
+                <td>
+                    @item.casa
+                </td>
+                <td class="text-right">
+                    @item.comportamento
+                </td>
+                <td class="text-right">
+                    @item.dimenticanze
+                </td>
+                <td class="text-right">
+                    @item.grandiG
+                </td>
+                <td class="text-right">
+                    @item.ordine
+                </td>
+                <td class="text-right">
+                    @item.varie
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+<hr class="hr2" />
+<h4 class="label label-warning">Dettaglio tutte le case</h4>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.Comportamento)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.Dimenticanze)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.GrandiG)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.OeP)
+            </th>
+            <th class="text-right">
+                @Html.DisplayNameFor(model => model.Varie)
+            </th>
+            <th></th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th></th>
+
+            }
+        </tr>
+
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+
+            <tr>
+                <td>
+                    @item.Nome.Nome @item.Data.ToString("dd MMM yyyy") <span class="text-danger">@item.Data.ToString("hh.mm")</span>
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(modelItem => item.Comportamento)
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(modelItem => item.Dimenticanze)
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(modelItem => item.GrandiG)
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(modelItem => item.OeP)
+                </td>
+                <td class="text-right">
+                    @Html.DisplayFor(modelItem => item.Varie)
+                </td>
+                <td >
+                    @Html.DisplayFor(modelItem => item.Motivazione)
+
+
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink(" ", "Edit", new { id = item.Punteggio_Id }, new { @class = "fa fa-pencil" })
+                        @Html.ActionLink(" ", "Delete", new { id = item.Punteggio_Id }, new { @class = "fa fa-trash text-danger" })
+                    </td>
+
+                }
+            </tr>
+        </tbody>
+    }
+
+</table>
+@section Scripts{
+
+    <script src="~/Scripts/jquery.filtertable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').filterTable();
+        });
+    </script>
+    }

@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -193,6 +194,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PunteggisController.cs" />
+    <Compile Include="Controllers\QuesitisController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -210,9 +212,26 @@
     <Compile Include="Migrations\201710031038113_insegnante.Designer.cs">
       <DependentUpon>201710031038113_insegnante.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710060916459_alunni.cs" />
+    <Compile Include="Migrations\201710060916459_alunni.Designer.cs">
+      <DependentUpon>201710060916459_alunni.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710071007310_incarichi.cs" />
+    <Compile Include="Migrations\201710071007310_incarichi.Designer.cs">
+      <DependentUpon>201710071007310_incarichi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710090740347_incarichi1.cs" />
+    <Compile Include="Migrations\201710090740347_incarichi1.Designer.cs">
+      <DependentUpon>201710090740347_incarichi1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710221806147_quesiti.cs" />
+    <Compile Include="Migrations\201710221806147_quesiti.Designer.cs">
+      <DependentUpon>201710221806147_quesiti.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModels.cs" />
+    <Compile Include="Models\AssegnaViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MainModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -220,6 +239,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-ConcordesSemper-20170929075454.mdf" />
+    <Content Include="App_Data\aspnet-ConcordesSemper-20170929075454_log.ldf">
+      <DependentUpon>aspnet-ConcordesSemper-20170929075454.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-datepicker3.css" />
     <Content Include="Content\bootstrap-datepicker3.min.css" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
@@ -244,8 +267,10 @@
     <Content Include="Content\Immagini\ConcordesSmall.png" />
     <Content Include="Content\Immagini\ConcordesVert.png" />
     <Content Include="Content\Immagini\Coppa.png" />
+    <Content Include="Content\Immagini\Gonfalone.png" />
     <Content Include="Content\Immagini\trasp.png" />
     <Content Include="Content\Immagini\tremaghi.png" />
+    <Content Include="Content\Immagini\wallpaper4.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -434,10 +459,19 @@
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
     <Content Include="Views\UsersAdmin\Index.cshtml" />
     <Content Include="Views\Punteggis\AssegnaI.cshtml" />
+    <Content Include="Views\Punteggis\Prof.cshtml" />
+    <Content Include="Views\Punteggis\EditIns.cshtml" />
+    <Content Include="Views\Punteggis\DeleteIns.cshtml" />
+    <Content Include="Views\Quesitis\Create.cshtml" />
+    <Content Include="Views\Quesitis\Delete.cshtml" />
+    <Content Include="Views\Quesitis\Details.cshtml" />
+    <Content Include="Views\Quesitis\Edit.cshtml" />
+    <Content Include="Views\Quesitis\Index.cshtml" />
+    <Content Include="Views\Quesitis\IndexUt.cshtml" />
+    <Content Include="Views\Quesitis\Risposta.cshtml" />
+    <Content Include="Views\Quesitis\Assegna.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -450,6 +484,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710031038113_insegnante.resx">
       <DependentUpon>201710031038113_insegnante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710060916459_alunni.resx">
+      <DependentUpon>201710060916459_alunni.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710071007310_incarichi.resx">
+      <DependentUpon>201710071007310_incarichi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090740347_incarichi1.resx">
+      <DependentUpon>201710090740347_incarichi1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710221806147_quesiti.resx">
+      <DependentUpon>201710221806147_quesiti.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

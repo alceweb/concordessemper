@@ -31,6 +31,27 @@
                                 @Html.ValidationMessageFor(model => model.UserName)
                             </div>
                         </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Casa_Id, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(m => m.Casa_Id, new SelectList(new List<object>{
+                                   new {value = "", text = "Nessuna casa assegnata"},
+                                   new {value = 1, text = "Acqua Neve"},
+                                   new {value = 2, text = "Caldo Raggio"},
+                                   new {value = 3, text = "Foglia Linfa"},
+                                   new {value = 4, text = "Fuoco Vivo"}
+
+                                   }, "value", "text", Model.Casa_Id, "---selezione---"), new {@class= "form-control"})
+                                @Html.ValidationMessageFor(model => model.Casa_Id)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Incarico, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Incarico, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Incarico)
+                            </div>
+                        </div>
                        <div class="form-group">
                             <div class="col-md-10">
                             </div>

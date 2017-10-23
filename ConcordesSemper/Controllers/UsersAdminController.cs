@@ -60,7 +60,8 @@ namespace ConcordesSemper.Controllers
         public async Task<ActionResult> Index()
         {
             ViewBag.UtentiCount = UserManager.Users.Count();
-            return View(await UserManager.Users.ToListAsync());
+
+            return View(await UserManager.Users.OrderBy(u=>u.UserName).ToListAsync());
         }
         //
         // GET: /Users/Details/5
@@ -153,6 +154,8 @@ namespace ConcordesSemper.Controllers
                 Id = user.Id,
                 Email = user.Email,
                 UserName = user.UserName,
+                Casa_Id = user.Casa_Id,
+                Incarico = user.Incarico,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
@@ -167,7 +170,7 @@ namespace ConcordesSemper.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,UserName,Nome,Cognome,Indirizzo,Città,CAP,Professione,Organizzazione,Bloccato")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Email,UserName,Nome,Cognome,Indirizzo,Città,CAP,Professione,Organizzazione,Bloccato,Casa_Id,Incarico")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -180,6 +183,8 @@ namespace ConcordesSemper.Controllers
                 user.UserName = editUser.Email;
                 user.UserName = editUser.UserName;
                 user.Email = editUser.Email;
+                user.Casa_Id = editUser.Casa_Id;
+                user.Incarico = editUser.Incarico;
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 
                 selectedRole = selectedRole ?? new string[] { };

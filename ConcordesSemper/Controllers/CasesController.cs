@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConcordesSemper.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ConcordesSemper.Controllers
 {
     public class CasesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
 
         // GET: Cases
         [Authorize(Roles ="Admin")]
@@ -35,12 +37,17 @@ namespace ConcordesSemper.Controllers
             //punteggioTotOggi generale casa
             var punteggio = db.Punteggis.Where(p => p.Casa_Id == id).OrderByDescending(p=>p.Data).ToList();
             ViewBag.Punteggio = punteggio;
-            //punteggio generale di oggi
+            //lista di tutti i punteggi assegnati di oggi
             var punteggioOggi = punteggio.Where(p => p.Data >= DateTime.Today);
                 ViewBag.PunteggioOggi = punteggioOggi;
+            ViewBag.CountOggi = punteggioOggi.Count();
             //punteggio Totale Oggi
             var punteggioTotOggi = punteggioOggi.Sum(p => p.Comportamento) + punteggioOggi.Sum(p => p.Dimenticanze) + punteggioOggi.Sum(p => p.OeP) + punteggioOggi.Sum(p => p.Varie) + punteggioOggi.Sum(p => p.GrandiG);
             ViewBag.PunteggioTotOggi = punteggioTotOggi;
+           var alunni = db.Alunnis.Where(c=>c.Casa_Id == id).OrderBy(a => a.Cognome).ToList();
+            var incaricati = db.Users.Where(t => t.Casa_Id == id).OrderBy(o=>o.UserName).ToList();
+            ViewBag.Incaricati = incaricati;
+            ViewBag.Alunni = alunni;
             return View(@case);
         }
 

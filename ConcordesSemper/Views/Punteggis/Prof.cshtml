@@ -1,0 +1,138 @@
+﻿@model IEnumerable<ConcordesSemper.Models.Punteggi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">I punteggi di @Request["username"]</h2>
+<hr class="hr1" />
+
+<div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" title="Per casa"><span class="fa fa-2x fa-trophy"></span></a></li>
+        <li role="presentation"><a href="#totale" aria-controls="totale" role="tab" data-toggle="tab" title="Tutti i punti assegnati"><span class="fa fa-2x fa-database"></span></a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <h4 class="label label-warning">Classifica personale</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th class="text-right">
+                            
+                        </th>
+                    </tr>
+
+                </thead>
+
+                @foreach (var item in Model.GroupBy(p => p.Nome.Nome).Select(p => new { casa = p.Key, totale = p.Sum(c => c.Comportamento) + p.Sum(d => d.Dimenticanze) + p.Sum(g => g.GrandiG) + p.Sum(o => o.OeP) + p.Sum(v => v.Varie) }).OrderByDescending(p=>p.totale))
+                {
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <h2>@item.casa  <span class="txt-ombra">  @item.totale</span></h2>
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+
+            </table>
+
+        </div>
+        <div role="tabpanel" class="tab-pane" id="totale">
+            <h4 class="label label-warning">Dettaglio tutte le case</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.Comportamento)
+                        </th>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.Dimenticanze)
+                        </th>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.GrandiG)
+                        </th>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.OeP)
+                        </th>
+                        <th class="text-right">
+                            @Html.DisplayNameFor(model => model.Varie)
+                        </th>
+                        <th></th>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <th></th>
+
+                        }
+                    </tr>
+
+                </thead>
+
+                @foreach (var item in Model)
+                {
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                @item.Nome.Nome <br />@item.Data.ToString("dd MMM yyyy") <span class="text-danger">@item.Data.ToString("hh.mm")</span>
+                            </td>
+                            <td class="text-right">
+                                @Html.DisplayFor(modelItem => item.Comportamento)
+                            </td>
+                            <td class="text-right">
+                                @Html.DisplayFor(modelItem => item.Dimenticanze)
+                            </td>
+                            <td class="text-right">
+                                @Html.DisplayFor(modelItem => item.GrandiG)
+                            </td>
+                            <td class="text-right">
+                                @Html.DisplayFor(modelItem => item.OeP)
+                            </td>
+                            <td class="text-right">
+                                @Html.DisplayFor(modelItem => item.Varie)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Motivazione)
+
+
+                            </td>
+                            @if (User.IsInRole("Admin"))
+                {
+                                <td>
+                                    @Html.ActionLink(" ", "Edit", new { id = item.Punteggio_Id }, new { @class = "fa fa-pencil fa-2x" })
+                                    @Html.ActionLink(" ", "Delete", new { id = item.Punteggio_Id }, new { @class = "fa fa-trash text-danger fa-2x" })
+                                </td>
+
+                            }
+                        </tr>
+                    </tbody>
+                }
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+<hr class="hr2" />
+@section Scripts{
+
+    <script src="~/Scripts/jquery.filtertable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').filterTable();
+        });
+    </script>
+    }

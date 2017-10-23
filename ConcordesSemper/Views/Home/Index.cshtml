@@ -3,6 +3,18 @@
 @{
     ViewBag.Title = "Home";
 }
+<!---Questito acquisizione punti-->
+@if (ViewBag.Quesiti > 0)
+{
+    <div>
+
+        <a class="quesitoHome" href="@Url.Action("IndexUt", "Quesitis")">
+            <img src="~/Content/Immagini/Gonfalone.png" />
+
+        </a>
+    </div>
+
+}
 
 <table class="table table-responsive">
     <tr>
@@ -45,35 +57,56 @@
                             {
 
                                 <a href="@Url.Action("Assegna", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                                <!-- Button trigger modal Alunni -->
+                                <a href="#alunno" data-toggle="modal">
+                                    <span class="fa fa-user"></span>
 
+                                </a>
                             }
 
                             @if (User.IsInRole("Insegnante"))
                             {
 
                                 <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
-                                <!-- trigger modal -->
-                                <a href="#alunno" data-toggle="modal"><span class="fa fa-user"></span></a>
-                                <!-- Modal -->
-                                <div class="modal fade" id="alunno" tabindex="-1" role="dialog" aria-labelledby="alunno">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Abbinamento alunno/casa</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h4>Se non ricordi a quale casa apppartiene un alunno ti aiuto io...</h4>
-                                                @*drop down list utenti/casa*@
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-primary">Assegna</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <!-- Button trigger modal Alunni -->
+                                <a href="#alunno" data-toggle="modal"><span class="fa fa-user"></span>
+                                    
+                                </a>
+
                             }
                         </div>
+                    <!-- Modal selezione casa tramite elenco alunni -->
+                    <div class="modal fade" id="alunno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Cerca a quale casa è assegnato l'alunno</h4>
+                                </div>
+                                <div class="modal-body h5">
+                                    <table class="table tbl1 table-responsive">
+                                        @foreach (var itemA in ViewBag.Alunno)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @if (User.IsInRole("Admin"))
+                                                    {
+                                                        <a href="@Url.Action("Assegna", "Punteggis", new {casa = itemA.Casa_Id })"><span>@itemA.Cognome @itemA.Nome</span></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = itemA.Casa_Id })"><span>@itemA.Cognome @itemA.Nome</span></a>
+
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </td>                   
 
@@ -120,14 +153,22 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <a href="@Url.Action("Assegna", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                                 <!-- Button trigger modal Alunni -->
+                            <a href="#alunno" data-toggle="modal">
+                                <span class="fa fa-user"></span>
+
+                            </a>
                         }
 
                         @if (User.IsInRole("Insegnante"))
                         {
 
                             <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
-                                <!-- trigger modal -->
-                            <a href="#alunno" data-toggle="modal"><span class="fa fa-user"></span></a>
+                                 <!-- Button trigger modal Alunni -->
+                            <a href="#alunno" data-toggle="modal">
+                                <span class="fa fa-user"></span>
+
+                            </a>
                         }
                     </div>
                 </td>
@@ -137,6 +178,16 @@
 
     </tr>
 </table><hr class="hr1" />
+
 <div class="text-center">
     <img class="img-responsive" src="~/Content/Immagini/ConcordesVert.png" />
 </div>
+@section Scripts{
+
+    <script src="~/Scripts/jquery.filtertable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.tbl1').filterTable();
+        });
+    </script>
+}

@@ -16,7 +16,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Insegnante)
             </th>
-            <th>
+            <th class="">
                 @Html.DisplayNameFor(model => model.Punti)
             </th>
             <th>
@@ -73,7 +73,7 @@
                 @Html.DisplayFor(modelItem => item.Motivazione)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id=item.Punteggio_Id }, new {@class="fa fa-pencil" }) |
+                @Html.ActionLink(" ", "Edit", new { id=item.Punteggio_Id }, new {@class="fa fa-pencil" })
                 @Html.ActionLink(" ", "Delete", new { id=item.Punteggio_Id }, new { @class = "fa fa-trash text-danger" })
             </td>
         </tr>

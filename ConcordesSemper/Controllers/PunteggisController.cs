@@ -15,7 +15,7 @@ namespace ConcordesSemper.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Punteggis
-    [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var punteggis = db.Punteggis.Include(p => p.Nome).OrderByDescending(p=>p.Data);
@@ -120,7 +120,7 @@ namespace ConcordesSemper.Controllers
 
 
         // GET: Punteggis/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Insegnante")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -139,7 +139,7 @@ namespace ConcordesSemper.Controllers
         // POST: Punteggis/Edit/5
         // Per proteggere da attacchi di overposting, abilitare le proprietà a cui eseguire il binding. 
         // Per ulteriori dettagli, vedere https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Insegnante")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Punteggio_Id,Casa_Id,Data,Punti,Motivazione,Comportamento,Dimenticanze,Varie,GrandiG,OeP,Insegnante")] Punteggi punteggi)
@@ -154,8 +154,40 @@ namespace ConcordesSemper.Controllers
             return View(punteggi);
         }
 
+        // GET: Punteggis/Edit/5
+        [Authorize(Roles = "Admin,Insegnante")]
+        public ActionResult EditIns(int? id, int? casa)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Punteggi punteggi = db.Punteggis.Find(id);
+            if (punteggi == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Casa_Id = new SelectList(db.Cases, "Casa_Id", "Nome", punteggi.Casa_Id);
+            return View(punteggi);
+        }
+
+        [Authorize(Roles = "Admin,Insegnante")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditIns(int? casa, [Bind(Include = "Punteggio_Id,Casa_Id,Data,Punti,Motivazione,Comportamento,Dimenticanze,Varie,GrandiG,OeP,Insegnante")] Punteggi punteggi)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(punteggi).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Content", "Cases", new {id = casa });
+            }
+            ViewBag.Casa_Id = new SelectList(db.Cases, "Casa_Id", "Nome", punteggi.Casa_Id);
+            return View(punteggi);
+        }
+
         // GET: Punteggis/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Insegnante")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -171,7 +203,7 @@ namespace ConcordesSemper.Controllers
         }
 
         // POST: Punteggis/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Insegnante")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -181,6 +213,46 @@ namespace ConcordesSemper.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [Authorize(Roles = "Admin,Insegnante")]
+        public ActionResult DeleteIns(int? id, int? casa)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Punteggi punteggi = db.Punteggis.Find(id);
+            if (punteggi == null)
+            {
+                return HttpNotFound();
+            }
+            return View(punteggi);
+        }
+
+        [Authorize(Roles = "Admin,Insegnante")]
+        [HttpPost, ActionName("DeleteIns")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteInsConfirmed(int id, int casa)
+        {
+            Punteggi punteggi = db.Punteggis.Find(id);
+            db.Punteggis.Remove(punteggi);
+            db.SaveChanges();
+            return RedirectToAction("Content", "Cases", new {id = casa });
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Prof(string username)
+        {
+            if (username == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var punteggis = db.Punteggis.Include(p => p.Nome).Where(p=>p.Insegnante == username).OrderByDescending(p => p.Data);
+            return View(punteggis.ToList());
+
+        }
+
 
         protected override void Dispose(bool disposing)
         {

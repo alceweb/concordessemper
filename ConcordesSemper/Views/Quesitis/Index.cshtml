@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ConcordesSemper.Models.Quesiti>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+    <a href="@Url.Action("Create", "Quesitis")" class="btn btn-primary"><span class="badge">@ViewBag.QuesitiCount</span> Nuovo</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quesito_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valore)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prof)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Pubblica)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quesito_Id)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Valore)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Prof)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Pubblica)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Quesito_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Quesito_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Quesito_Id })
+        </td>
+    </tr>
+}
+
+</table>

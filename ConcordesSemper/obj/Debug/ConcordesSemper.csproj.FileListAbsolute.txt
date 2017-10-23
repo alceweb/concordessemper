@@ -115,4 +115,9 @@ c:\users\cesare.crc2016\documents\visual studio 2017\Projects\ConcordesSemper\Co
 c:\users\cesare.crc2016\documents\visual studio 2017\Projects\ConcordesSemper\ConcordesSemper\obj\Debug\ConcordesSemper.Migrations.InitialCreate.resources
 c:\users\cesare.crc2016\documents\visual studio 2017\Projects\ConcordesSemper\ConcordesSemper\obj\Debug\ConcordesSemper.csproj.GenerateResource.Cache
 c:\users\cesare.crc2016\documents\visual studio 2017\Projects\ConcordesSemper\ConcordesSemper\obj\Debug\ConcordesSemper.Migrations.main.resources
-c:\users\cesare.crc2016\documents\visual studio 2017\Projects\ConcordesSemper\ConcordesSemper\obj\Debug\ConcordesSemper.csprojResolveAssemblyReference.cache
+C:\Users\Cesare.CRC2016\Documents\Visual Studio 2017\Projects\ConcordesSemper\ConcordesSemper\obj\Debug\ConcordesSemper.Migrations.insegnante.resources
+C:\Users\Cesare.CRC2016\Documents\Visual Studio 2017\Projects\ConcordesSemper\ConcordesSemper\obj\Debug\ConcordesSemper.Migrations.alunni.resources
+C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Debug\ConcordesSemper.Migrations.incarichi.resources
+C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Debug\ConcordesSemper.Migrations.incarichi1.resources
+C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Debug\ConcordesSemper.csproj.CoreCompileInputs.cache
+C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Debug\ConcordesSemper.Migrations.quesiti.resources
