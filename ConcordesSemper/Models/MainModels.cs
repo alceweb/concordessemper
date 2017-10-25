@@ -63,10 +63,12 @@ namespace ConcordesSemper.Models
     public class Quesiti
     {
         [Key]
+        [Display(Name ="Gara N.")]
         public int Quesito_Id { get; set; }
+        [Display(Name ="Insegnante")]
         public string Prof { get; set; }
         [Required]
-        [Display(Name ="Valore")]
+        [Display(Name ="Punti")]
         public int Valore { get; set; }
         [Required]
         [Display(Name ="Prima domanda")]

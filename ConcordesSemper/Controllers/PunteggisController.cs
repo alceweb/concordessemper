@@ -118,6 +118,27 @@ namespace ConcordesSemper.Controllers
             return View(punteggi);
         }
 
+        public ActionResult AssegnaTornei(int casa, int punti)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AssegnaTornei(int casa, int punti, int torneoId, DateTime datat, string insegnante, [Bind(Include = "Punteggio_Id,Casa_Id,Data,Varie,Motivazione,Insegnante")] Punteggi assegna)
+        {
+            if (ModelState.IsValid)
+            {
+                assegna.Data = DateTime.Now;
+                assegna.Casa_Id = casa;
+                assegna.Varie = punti;
+                assegna.Motivazione = punti + " punti per risoluzione gara N." + torneoId + " dell'insegnante " + insegnante;  
+                db.Punteggis.Add(assegna);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+
+            }
+            return View(assegna);
+        }
 
         // GET: Punteggis/Edit/5
         [Authorize(Roles = "Admin,Insegnante")]

@@ -49,12 +49,19 @@ textarea {
         height:50px;
     }
 }
-.img-stemma-menu {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    height: 150px;
+.img-tornei-menu {
+    height:50px;
 }
+.img-tornei-menu img :hover {
+    height:60px;
+} 
+    
+.img-stemma-menu {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        height: 150px;
+    }
 @media (max-width: 1270px) {
     .img-stemma-menu {
         height: 120px;
@@ -192,4 +199,57 @@ select[multiple].input-xlg {
         font-size:0.8em;
         font-weight:bolder;
     }
+}
+
+.bianco{
+    color:#fff;
+}
+
+.quesitoHome{
+    position:fixed;
+    top:35%;
+    left:-60px;
+    -webkit-transition: 2s; /* For Safari 3.1 to 6.0 */
+    transition: ease all 2s;
+}
+    .quesitoHome img {
+        opacity: 0.5;
+        width: 120px;
+        transition: ease all 2s;
+    }
+    .quesitoHome :hover {
+        opacity: 1;
+        left: 0px;
+        -ms-transform: translate(50px); /* IE 9 */
+        -webkit-transform: translate(50px); /* Safari */
+        transform: translate(50px);
+        transition: ease all 2s;
+    }
+@media (max-width: 900px) {
+    .quesitoHome {
+        left: -50px;
+        top: 50%;
+    }
+
+    .quesitoHome img{
+        width: 90px;
+    }
+        .quesitoHome :hover {
+            -ms-transform: translate(30px); /* IE 9 */
+            -webkit-transform: translate(30px); /* Safari */
+            transform: translate(30px);
+        }
+}@media (max-width: 485px) {
+
+    .quesitoHome {
+        left: -20px;
+    }
+    .quesitoHome img{
+        width: 50px;
+    }
+        .quesitoHome :hover {
+            -ms-transform: translate(20px); /* IE 9 */
+            -webkit-transform: translate(20px); /* Safari */
+            transform: translate(20px);
+        }
 }

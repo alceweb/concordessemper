@@ -1,0 +1,91 @@
+﻿@model ConcordesSemper.Models.Quesiti
+
+@{
+    ViewBag.Title = "Risposta";
+}
+
+<h2 class="text-center">Gara @Model.Quesito_Id punti <span class="txt-ombra h2">@Model.Valore</span></h2><hr class="hr1" />
+<div id="domande">
+    <h3>Domande</h3>
+    <ul class="list-unstyled">
+        <li id="domanda_1">
+            @Model.Domanda_1: <input id="risposta_1" class="form-control" type="text" /><input id="btn_1" type="button" class="btn btn-primary" value="Invia" />
+        </li>
+        <li id="domanda_2">
+            @Model.Domanda_2: <input id="risposta_2" class="form-control" type="text" /><input id="btn_2" type="button" class="btn btn-primary" value="Invia" />
+        </li>
+        <li id="domanda_3">
+            @Model.Domanda_3: <input id="risposta_3" class="form-control" type="text" /><input id="btn_3" type="button" class="btn btn-primary" value="Invia" />
+        </li>
+        <li id="domanda_4">
+            @Model.Domanda_4: <input id="risposta_4" class="form-control" type="text" /><input id="btn_4" type="button" class="btn btn-primary" value="Invia" />
+        </li>
+        <li id="domanda_5">
+            @Model.Domanda_5: <input id="risposta_5" class="form-control" type="text" /><input id="btn_5" type="button" class="btn btn-primary" value="Invia" />
+        </li>
+    </ul>
+
+</div>
+<div id="success">
+    @if (Model.DataF == Model.DataI)
+    {
+        <h2>Complimenti</h2>
+        <h4 class="alert alert-success">hai risposto giusto a tutte le domande della gara N. @Model.Quesito_Id</h4>
+        <p>Adesso puoi assegnare alla tua casa @Model.Valore punti</p>
+        <a href="@Url.Action("Assegna", "Quesitis", new {id = Model.Quesito_Id })" class="btn btn-primary">Prosegui</a>
+    }
+    else
+    {
+        <h2>Complimenti</h2>
+        <h4>hai risposto giusto a tutte le domande del torneo N. @Model.Quesito_Id</h4>
+        <h4 class="alert alert-danger">Purtroppo qualcuno ha già risposto esattamente a tutte le domande e si è già accaparato i @Model.Valore punti...</h4>
+        <h4>Riprova con la prossima gara</h4>
+    }
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#domanda_2').hide()
+            $('#domanda_3').hide()
+            $('#domanda_4').hide()
+            $('#domanda_5').hide()
+            $('#success').hide()
+        });
+        $('#btn_1').click(function () {
+            if ($('#risposta_1').val() == '@Model.Risposta_1'){
+                $('#domanda_2').show()
+                $('#btn_1').hide()
+                $('#risposta_2').focus()
+            }
+        });
+        $('#btn_2').click(function () {
+            if ($('#risposta_2').val() == '@Model.Risposta_2'){
+                $('#domanda_3').show()
+                $('#btn_2').hide()
+                $('#risposta_3').focus()
+            }
+        });
+        $('#btn_3').click(function () {
+            if ($('#risposta_3').val() == '@Model.Risposta_3') {
+                $('#domanda_4').show();
+                $('#btn_3').hide()
+                $('#risposta_4').focus()
+           }
+        });
+        $('#btn_4').click(function () {
+            if ($('#risposta_4').val() == '@Model.Risposta_4') {
+                $('#domanda_5').show();
+                $('#btn_4').hide()
+                $('#risposta_5').focus()
+          }
+        });
+        $('#btn_5').click(function () {
+            if ($('#risposta_5').val() == '@Model.Risposta_5') {
+                $('#domande').hide();
+                $('#success').show();
+                $('#btn_4').hide()
+            }
+        });
+
+    </script>
+}

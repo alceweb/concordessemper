@@ -121,3 +121,4 @@ C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\Co
 C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Release\ConcordesSemper.Migrations.incarichi.resources
 C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Release\ConcordesSemper.Migrations.incarichi1.resources
 C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Release\ConcordesSemper.csproj.CoreCompileInputs.cache
+C:\Users\Cesare.CRC2016\documents\visual studio 2017\Projects\Concordessemper\ConcordesSemper\obj\Release\ConcordesSemper.Migrations.quesiti.resources

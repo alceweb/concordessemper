@@ -1,0 +1,25 @@
+﻿@model ConcordesSemper.Models.Punteggi
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="text-center">Abbiamo quasi finito!</h2><hr class="hr1" />
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+        <hr />
+
+            <div class="text-center">
+                <h4>Verranno assegnati @Request.QueryString["punti"] punti alla tua casa perchè hai risposto esattamente a tutte domande della gara n°@Request.QueryString["torneoId"] pubblicata da @Request.QueryString["insegnante"]</h4><hr class="hr1" />
+                <input type="submit" value="Assegna @Request.QueryString["punti"] punti alla tua casa" class="btn btn-success" />
+            </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

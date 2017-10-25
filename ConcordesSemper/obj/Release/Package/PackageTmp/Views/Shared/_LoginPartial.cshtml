@@ -10,12 +10,11 @@
                 <a href="@Url.Action("Index", "RolesAdmin")" class="fa fa-tags fa-2x text-success" title="Gestione ruoli"></a>
                <a href="@Url.Action("Register", "Account")" class="fa fa-user-plus fa-2x text-success" title="Registra utente"></a>
                  <a href="@Url.Action("Index", "UsersAdmin")" class="fa fa-users fa-2x text-success" title="Gestione utente"></a>
+                <a href="@Url.Action("Index", "Quesitis")"><img class="img-tornei-menu" src="~/Content/Immagini/GonfaloneP.png" /></a>
             }
-
 
             @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             <a href="javascript:document.getElementById('logoutForm').submit()"><span class="fa fa-sign-out fa-2x text-danger"></span></a>
-
         </div>
 
     }

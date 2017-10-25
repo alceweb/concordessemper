@@ -90,7 +90,7 @@
                                             <h5>@item.Data.ToString("dddd dd MMMMM yyyy") sono stati assegnati @item.Varie punti da @item.Insegnante</h5>
                                         </div>
                                         <div class="modal-body">
-                                            Motivo:<h4>@item.Motivazione</h4>
+                                           <h4>@item.Motivazione</h4>
                                         </div>
                                     </div>
 
@@ -136,9 +136,9 @@
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><span class="fa fa-graduation-cap fa-3x text-success"></span></a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><span class="fa fa-users fa-3x text-success"></span></a></li>
         @if (User.IsInRole("Admin") | User.IsInRole("Insegnante"))
         {
+        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><span class="fa fa-users fa-3x text-success"></span></a></li>
             <li role="presentation"><a href="#totale" aria-controls="totale" role="tab" data-toggle="tab"><span class="fa fa-database fa-3x text-success"></span></a></li>
         }
     </ul>

@@ -23,10 +23,10 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>09/29/2017 07:54:50</publishTime>
     </File>
     <File Include="bin/ConcordesSemper.dll">
-      <publishTime>10/20/2017 10:45:14</publishTime>
+      <publishTime>10/23/2017 16:29:56</publishTime>
     </File>
     <File Include="bin/ConcordesSemper.pdb">
-      <publishTime>10/20/2017 10:45:14</publishTime>
+      <publishTime>10/23/2017 16:29:56</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -574,6 +574,12 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
     <File Include="Content/Immagini/Coppa.png">
       <publishTime>10/04/2017 09:51:41</publishTime>
     </File>
+    <File Include="Content/Immagini/Gonfalone.png">
+      <publishTime>10/21/2017 09:59:26</publishTime>
+    </File>
+    <File Include="Content/Immagini/GonfaloneP.png">
+      <publishTime>10/23/2017 11:16:40</publishTime>
+    </File>
     <File Include="Content/Immagini/trasp.png">
       <publishTime>09/29/2017 23:53:32</publishTime>
     </File>
@@ -584,7 +590,7 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>10/11/2017 15:10:44</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/11/2017 15:13:05</publishTime>
+      <publishTime>10/23/2017 11:24:12</publishTime>
     </File>
     <File Include="Content/_bootstrap-datetimepicker.less">
       <publishTime>09/29/2017 08:01:28</publishTime>
@@ -746,7 +752,7 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>09/29/2017 07:54:43</publishTime>
     </File>
     <File Include="Views/Cases/Content.cshtml">
-      <publishTime>10/20/2017 10:41:55</publishTime>
+      <publishTime>10/24/2017 12:59:09</publishTime>
     </File>
     <File Include="Views/Cases/Create.cshtml">
       <publishTime>09/29/2017 08:11:40</publishTime>
@@ -770,7 +776,7 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>09/29/2017 07:54:25</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/11/2017 16:54:52</publishTime>
+      <publishTime>10/24/2017 10:48:17</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>09/29/2017 07:54:43</publishTime>
@@ -796,6 +802,9 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
     <File Include="Views/Punteggis/AssegnaI.cshtml">
       <publishTime>10/04/2017 11:40:40</publishTime>
     </File>
+    <File Include="Views/Punteggis/AssegnaTornei.cshtml">
+      <publishTime>10/23/2017 16:20:20</publishTime>
+    </File>
     <File Include="Views/Punteggis/Create.cshtml">
       <publishTime>03/10/2017 12:44:53</publishTime>
     </File>
@@ -815,10 +824,34 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>10/20/2017 10:44:31</publishTime>
     </File>
     <File Include="Views/Punteggis/Index.cshtml">
-      <publishTime>10/05/2017 10:39:21</publishTime>
+      <publishTime>10/20/2017 17:30:39</publishTime>
     </File>
     <File Include="Views/Punteggis/Prof.cshtml">
       <publishTime>10/20/2017 17:47:29</publishTime>
+    </File>
+    <File Include="Views/Quesitis/Assegna.cshtml">
+      <publishTime>10/23/2017 16:12:37</publishTime>
+    </File>
+    <File Include="Views/Quesitis/Create.cshtml">
+      <publishTime>10/23/2017 09:32:51</publishTime>
+    </File>
+    <File Include="Views/Quesitis/Delete.cshtml">
+      <publishTime>10/22/2017 15:52:02</publishTime>
+    </File>
+    <File Include="Views/Quesitis/Details.cshtml">
+      <publishTime>10/23/2017 10:27:55</publishTime>
+    </File>
+    <File Include="Views/Quesitis/Edit.cshtml">
+      <publishTime>10/23/2017 15:39:48</publishTime>
+    </File>
+    <File Include="Views/Quesitis/Index.cshtml">
+      <publishTime>10/23/2017 15:35:06</publishTime>
+    </File>
+    <File Include="Views/Quesitis/IndexUt.cshtml">
+      <publishTime>10/23/2017 15:53:56</publishTime>
+    </File>
+    <File Include="Views/Quesitis/Risposta.cshtml">
+      <publishTime>10/23/2017 15:56:57</publishTime>
     </File>
     <File Include="Views/RolesAdmin/Create.cshtml">
       <publishTime>09/29/2017 11:26:31</publishTime>
@@ -842,10 +875,10 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>09/29/2017 07:54:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/10/2017 15:23:58</publishTime>
+      <publishTime>10/21/2017 09:48:40</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>10/03/2017 12:20:23</publishTime>
+      <publishTime>10/23/2017 11:26:37</publishTime>
     </File>
     <File Include="Views/UsersAdmin/Create.cshtml">
       <publishTime>03/10/2017 09:17:35</publishTime>

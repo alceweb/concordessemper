@@ -19,14 +19,25 @@ namespace ConcordesSemper.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            var prof = User.Identity.GetUserId();
-            var quesiti = db.Quesitis.Where(q => q.Prof == prof).ToList();
+            var prof = User.Identity.GetUserName();
+            if (User.IsInRole("Admin"))
+            {
+            var quesiti = db.Quesitis.OrderByDescending(q=>q.DataI).ToList();
             ViewBag.QuesitiCount = quesiti.Count();
             return View(quesiti);
+
+            }
+            else
+            {
+                var quesiti = db.Quesitis.Where(q => q.Prof == prof).OrderByDescending(q=>q.DataI).ToList();
+                ViewBag.QuesitiCount = quesiti.Count();
+                return View(quesiti);
+            }
+
         }
         public ActionResult IndexUt()
         {
-            var quesiti = db.Quesitis.Where(q => q.Pubblica == true && q.DataI == q.DataF);
+            var quesiti = db.Quesitis.Where(q => q.Pubblica == true && q.DataI == q.DataF).OrderByDescending(q => q.DataI);
             return View(quesiti);
         }
 
@@ -169,12 +180,13 @@ namespace ConcordesSemper.Controllers
             if (ModelState.IsValid)
             {
                 Quesiti quesiti = db.Quesitis.Find(assegna.Quesito_Id);
+                quesiti.Casa_Id = assegna.Casa_Id;
                 quesiti.DataF = DateTime.Now;
                 quesiti.NomeAlunno = assegna.NomeAlunno;
                 quesiti.Cognome = assegna.Cognome;
                 db.Entry(quesiti).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Cases");
+                return RedirectToAction("AssegnaTornei", "Punteggis", new {casa =quesiti.Casa_Id, punti = quesiti.Valore, insegnante = quesiti.Prof, datat = quesiti.DataI, torneoId = quesiti.Quesito_Id});
             }
             return View(assegna);
         }

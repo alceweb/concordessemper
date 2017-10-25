@@ -31,7 +31,7 @@ namespace ConcordesSemper.Controllers
             ViewBag.FF = casate.Where(c => c.Casa_Id >= 3);
             ViewBag.Punti = punti;
             ViewBag.Alunno = (db.Alunnis.OrderBy(a=>a.Cognome)).ToList();
-            ViewBag.Quesiti = db.Quesitis.Where(q => q.Pubblica == true).Count();
+            ViewBag.Quesiti = db.Quesitis.Where(q => q.Pubblica == true && q.DataI == q.DataF).Count();
             return View(casate);
         }
 

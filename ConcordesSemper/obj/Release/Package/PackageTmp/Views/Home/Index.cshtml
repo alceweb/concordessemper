@@ -3,6 +3,19 @@
 @{
     ViewBag.Title = "Home";
 }
+<!---Questito acquisizione punti-->
+@if (ViewBag.Quesiti > 0)
+{
+    <div>
+
+        <a class="quesitoHome" href="@Url.Action("IndexUt", "Quesitis")">
+            <img src="~/Content/Immagini/Gonfalone.png" />
+
+        </a>
+    </div>
+
+}
+
 <table class="table table-responsive">
     <tr>
 
