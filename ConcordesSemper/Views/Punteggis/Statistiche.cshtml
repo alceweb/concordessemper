@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ConcordesSemper.Models.Punteggi>
+
+@{
+    ViewBag.Title = "Statistiche";
+}
+
+<h2 class="text-center">Statistiche</h2><hr class="hr1" />
+<table class="table table-hover">
+    <thead>
+
+        <tr>
+            <th>
+            </th>
+            <th class="text-center">Inserimenti</th>
+            <th class="text-center h6">Acqua Neve<br/><img class="img-casa-statistiche" src="~/Content/Immagini/1.png" /></th>
+            <th class="text-center h6">Caldo Raggio<br /><img class="img-casa-statistiche" src="~/Content/Immagini/2.png" /></th>
+            <th class="text-center h6">Foglia Linfa<br /><img class="img-casa-statistiche" src="~/Content/Immagini/3.png" /></th>
+            <th class="text-center h6">Fuoco Vivo<br /><img class="img-casa-statistiche" src="~/Content/Immagini/4.png" /></th>
+           <th class="text-center">Totale punti</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @{
+
+            var ord = "linee";
+            foreach (var item in Model.GroupBy(i => i.Insegnante).
+                        Select(i => new
+                        {
+                            ord = ord,
+                            insegnante = i.Key,
+                            linee = i.Count(),
+                            totale = i.Sum(c => c.Comportamento) + i.Sum(d => d.Dimenticanze) + i.Sum(g => g.GrandiG) + i.Sum(o => o.OeP) + i.Sum(v => v.Varie),
+                            acquaneve =
+                                i.Where(c => c.Nome.Casa_Id == 1).Sum(c => c.Comportamento) +
+                                i.Where(c => c.Nome.Casa_Id == 1).Sum(d => d.Dimenticanze) +
+                                i.Where(c => c.Nome.Casa_Id == 1).Sum(g => g.GrandiG) +
+                                i.Where(c => c.Nome.Casa_Id == 1).Sum(o => o.OeP) +
+                                i.Where(c => c.Nome.Casa_Id == 1).Sum(v => v.Varie),
+                            caldoraggio =
+                                i.Where(c => c.Nome.Casa_Id == 2).Sum(c => c.Comportamento) +
+                                i.Where(c => c.Nome.Casa_Id == 2).Sum(d => d.Dimenticanze) +
+                                i.Where(c => c.Nome.Casa_Id == 2).Sum(g => g.GrandiG) +
+                                i.Where(c => c.Nome.Casa_Id == 2).Sum(o => o.OeP) +
+                                i.Where(c => c.Nome.Casa_Id == 2).Sum(v => v.Varie),
+                            foglialinfa =
+                                i.Where(c => c.Nome.Casa_Id == 3).Sum(c => c.Comportamento) +
+                                i.Where(c => c.Nome.Casa_Id == 3).Sum(d => d.Dimenticanze) +
+                                i.Where(c => c.Nome.Casa_Id == 3).Sum(g => g.GrandiG) +
+                                i.Where(c => c.Nome.Casa_Id == 3).Sum(o => o.OeP) +
+                                i.Where(c => c.Nome.Casa_Id == 3).Sum(v => v.Varie),
+                            fuocovivo =
+                                i.Where(c => c.Nome.Casa_Id == 4).Sum(c => c.Comportamento) +
+                                i.Where(c => c.Nome.Casa_Id == 4).Sum(d => d.Dimenticanze) +
+                                i.Where(c => c.Nome.Casa_Id == 4).Sum(g => g.GrandiG) +
+                                i.Where(c => c.Nome.Casa_Id == 4).Sum(o => o.OeP) +
+                                i.Where(c => c.Nome.Casa_Id == 4).Sum(v => v.Varie),
+                                mindata = 
+                                i.Min(m=>m.Data),
+                                maxdata =
+                                i.Max(m=>m.Data)
+                        }).OrderByDescending(i => i.linee))
+            {
+
+            <tr>
+                <td>
+                    <span class="text-primary">@Html.DisplayFor(modelItem => item.insegnante)</span><br/>
+                    <span class="text-danger">@item.mindata.ToString("dd MMM yy") <span class="h6">@item.mindata.ToString("HH.mm")</span> - </span>
+                    <span class="text-success">@item.maxdata.ToString("dd MMM yy") <span class="h6">@item.maxdata.ToString("HH.mm")</span></span>
+                </td>
+                <td class="text-center text-warning">
+                    <strong>@Html.DisplayFor(modelItem => item.linee)</strong>
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.acquaneve)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.caldoraggio)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.foglialinfa)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.fuocovivo)
+                </td>
+               <td class="text-center">
+                   <strong>@Html.DisplayFor(modelItem => item.totale)</strong>
+                </td>
+            </tr>
+                }
+            }
+    </tbody>
+
+
+</table>

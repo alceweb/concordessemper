@@ -269,7 +269,7 @@ namespace ConcordesSemper.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var punteggis = db.Punteggis.Include(p => p.Nome).Where(p=>p.Insegnante == username).OrderByDescending(p => p.Data);
+            var punteggis = db.Punteggis.Include(p => p.Nome).Where(p=>p.Insegnante == username);
             return View(punteggis.ToList());
 
         }
@@ -282,6 +282,13 @@ namespace ConcordesSemper.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Authorize(Roles ="Admin,Preside")]
+        public ActionResult Statistiche(string sortOrder)
+        {
+            var statistica = db.Punteggis.Include(c=>c.Nome).ToList();
+            return View(statistica);
         }
     }
 }

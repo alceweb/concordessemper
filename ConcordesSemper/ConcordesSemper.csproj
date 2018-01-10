@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlunnisController.cs" />
     <Compile Include="Controllers\CasesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -269,6 +270,8 @@
     <Content Include="Content\Immagini\Coppa.png" />
     <Content Include="Content\Immagini\Gonfalone.png" />
     <Content Include="Content\Immagini\GonfaloneP.png" />
+    <Content Include="Content\Immagini\Sfondo.jpg" />
+    <Content Include="Content\Immagini\sfondo.png" />
     <Content Include="Content\Immagini\trasp.png" />
     <Content Include="Content\Immagini\tremaghi.png" />
     <Content Include="Content\Immagini\wallpaper4.png" />
@@ -380,6 +383,8 @@
     <None Include="Properties\PublishProfiles\ConcordesSemper - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\canvasjs.min.js" />
+    <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -472,6 +477,13 @@
     <Content Include="Views\Quesitis\Risposta.cshtml" />
     <Content Include="Views\Quesitis\Assegna.cshtml" />
     <Content Include="Views\Punteggis\AssegnaTornei.cshtml" />
+    <Content Include="Views\Alunnis\Create.cshtml" />
+    <Content Include="Views\Alunnis\Delete.cshtml" />
+    <Content Include="Views\Alunnis\Details.cshtml" />
+    <Content Include="Views\Alunnis\Edit.cshtml" />
+    <Content Include="Views\Alunnis\Index.cshtml" />
+    <Content Include="Views\Home\Regolamento.cshtml" />
+    <Content Include="Views\Punteggis\Statistiche.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

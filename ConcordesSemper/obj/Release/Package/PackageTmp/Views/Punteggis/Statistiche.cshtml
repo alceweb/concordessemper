@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ConcordesSemper.Models.Punteggi>
+
+@{
+    ViewBag.Title = "Statistiche";
+}
+
+<h2>Statistiche</h2>
+
+
+<table class="table table-hover">
+    <thead>
+
+        <tr>
+            <th>
+            </th>
+            <th class="text-center">Inserimenti</th>
+            <th class="text-center">Acqua Neve</th>
+            <th class="text-center">Caldo Raggio</th>
+            <th class="text-center">Foglia Linfa</th>
+            <th class="text-center">Fuoco Vivo</th>
+           <th class="text-center">Totale punti</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model.GroupBy(i => i.Insegnante).
+                Select(i => new {
+                    insegnante = i.Key,
+                    linee = i.Count(),
+                    totale = i.Sum(c => c.Comportamento) + i.Sum(d => d.Dimenticanze) + i.Sum(g => g.GrandiG) + i.Sum(o => o.OeP) + i.Sum(v => v.Varie),
+                    acquaneve = 
+                        i.Where(c=>c.Nome.Nome == "Acqua Neve").Sum(c => c.Comportamento) +
+                        i.Where(c => c.Nome.Nome == "Acqua Neve").Sum(d => d.Dimenticanze) +
+                        i.Where(c => c.Nome.Nome == "Acqua Neve").Sum(g => g.GrandiG) +
+                        i.Where(c => c.Nome.Nome == "Acqua Neve").Sum(o => o.OeP) +
+                        i.Where(c => c.Nome.Nome == "Acqua Neve").Sum(v => v.Varie),
+                    caldoraggio = 
+                        i.Where(c => c.Nome.Nome == "Caldo raggio").Sum(c => c.Comportamento) +
+                        i.Where(c => c.Nome.Nome == "Caldo Raggio").Sum(d => d.Dimenticanze) +
+                        i.Where(c => c.Nome.Nome == "Caldo Raggio").Sum(g => g.GrandiG) +
+                        i.Where(c => c.Nome.Nome == "Caldo Raggio").Sum(o => o.OeP) +
+                        i.Where(c => c.Nome.Nome == "Caldo Raggio").Sum(v => v.Varie),
+                    foglialinfa = 
+                        i.Where(c => c.Nome.Nome == "Foglia linfa").Sum(c => c.Comportamento) +
+                        i.Where(c => c.Nome.Nome == "Foglia Linfa").Sum(d => d.Dimenticanze) +
+                        i.Where(c => c.Nome.Nome == "Foglia Linfa").Sum(g => g.GrandiG) +
+                        i.Where(c => c.Nome.Nome == "Foglia Linfa").Sum(o => o.OeP) + 
+                        i.Where(c => c.Nome.Nome == "Foglia Linfa").Sum(v => v.Varie),
+                    fuocovivo = 
+                        i.Where(c => c.Nome.Nome == "Fuoco Vivo").Sum(c => c.Comportamento) +
+                        i.Where(c => c.Nome.Nome == "Fuoco Vivo").Sum(d => d.Dimenticanze) +
+                        i.Where(c => c.Nome.Nome == "Fuoco Vivo").Sum(g => g.GrandiG) +
+                        i.Where(c => c.Nome.Nome == "Fuoco Vivo").Sum(o => o.OeP) + 
+                        i.Where(c => c.Nome.Nome == "Fuoco Vivo").Sum(v => v.Varie),
+                }).OrderByDescending(i => i.linee))
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.insegnante)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.linee)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.acquaneve)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.caldoraggio)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.foglialinfa)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.fuocovivo)
+                </td>
+               <td class="text-center">
+                   <strong>@Html.DisplayFor(modelItem => item.totale)</strong>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

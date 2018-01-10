@@ -23,10 +23,10 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>09/29/2017 07:54:50</publishTime>
     </File>
     <File Include="bin/ConcordesSemper.dll">
-      <publishTime>10/23/2017 16:29:56</publishTime>
+      <publishTime>01/09/2018 10:00:12</publishTime>
     </File>
     <File Include="bin/ConcordesSemper.pdb">
-      <publishTime>10/23/2017 16:29:56</publishTime>
+      <publishTime>01/09/2018 10:00:12</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -539,31 +539,34 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>03/10/2017 10:00:42</publishTime>
     </File>
     <File Include="Content/Immagini/1W.png">
-      <publishTime>10/07/2017 08:04:51</publishTime>
+      <publishTime>10/25/2017 17:08:49</publishTime>
     </File>
     <File Include="Content/Immagini/2.png">
       <publishTime>10/11/2017 17:02:29</publishTime>
     </File>
     <File Include="Content/Immagini/2W.png">
-      <publishTime>10/07/2017 08:05:12</publishTime>
+      <publishTime>10/25/2017 17:08:25</publishTime>
     </File>
     <File Include="Content/Immagini/3.png">
       <publishTime>03/10/2017 10:00:42</publishTime>
     </File>
     <File Include="Content/Immagini/3W.png">
-      <publishTime>10/07/2017 08:05:49</publishTime>
+      <publishTime>10/25/2017 17:07:57</publishTime>
     </File>
     <File Include="Content/Immagini/4.png">
       <publishTime>03/10/2017 10:00:43</publishTime>
     </File>
     <File Include="Content/Immagini/4W.png">
-      <publishTime>10/07/2017 08:06:24</publishTime>
+      <publishTime>10/25/2017 17:05:33</publishTime>
     </File>
     <File Include="Content/Immagini/Concordes.jpg">
       <publishTime>09/29/2017 15:59:57</publishTime>
     </File>
     <File Include="Content/Immagini/Concordes.png">
       <publishTime>10/11/2017 16:54:31</publishTime>
+    </File>
+    <File Include="Content/Immagini/ConcordesApp.png">
+      <publishTime>11/08/2017 10:53:33</publishTime>
     </File>
     <File Include="Content/Immagini/ConcordesSmall.png">
       <publishTime>09/29/2017 17:22:12</publishTime>
@@ -580,6 +583,12 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
     <File Include="Content/Immagini/GonfaloneP.png">
       <publishTime>10/23/2017 11:16:40</publishTime>
     </File>
+    <File Include="Content/Immagini/Sfondo.jpg">
+      <publishTime>02/11/2017 15:50:31</publishTime>
+    </File>
+    <File Include="Content/Immagini/sfondo.png">
+      <publishTime>02/11/2017 15:39:19</publishTime>
+    </File>
     <File Include="Content/Immagini/trasp.png">
       <publishTime>09/29/2017 23:53:32</publishTime>
     </File>
@@ -590,13 +599,13 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>10/11/2017 15:10:44</publishTime>
     </File>
     <File Include="Content/Site.css">
-      <publishTime>10/23/2017 11:24:12</publishTime>
+      <publishTime>01/09/2018 17:19:36</publishTime>
     </File>
     <File Include="Content/_bootstrap-datetimepicker.less">
       <publishTime>09/29/2017 08:01:28</publishTime>
     </File>
     <File Include="favicon.ico">
-      <publishTime>09/29/2017 07:54:25</publishTime>
+      <publishTime>03/11/2017 09:59:08</publishTime>
     </File>
     <File Include="fonts/fontawesome-webfont.eot">
       <publishTime>09/29/2017 08:00:50</publishTime>
@@ -654,6 +663,12 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
     </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>09/29/2017 08:01:27</publishTime>
+    </File>
+    <File Include="Scripts/canvasjs.min.js">
+      <publishTime>11/02/2017 19:04:13</publishTime>
+    </File>
+    <File Include="Scripts/Chart.js">
+      <publishTime>11/02/2017 19:04:20</publishTime>
     </File>
     <File Include="Scripts/jquery-3.2.1.js">
       <publishTime>09/29/2017 08:02:42</publishTime>
@@ -751,8 +766,23 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
     <File Include="Views/Account/_ExternalLoginsListPartial.cshtml">
       <publishTime>09/29/2017 07:54:43</publishTime>
     </File>
+    <File Include="Views/Alunnis/Create.cshtml">
+      <publishTime>10/25/2017 15:59:13</publishTime>
+    </File>
+    <File Include="Views/Alunnis/Delete.cshtml">
+      <publishTime>10/25/2017 15:59:14</publishTime>
+    </File>
+    <File Include="Views/Alunnis/Details.cshtml">
+      <publishTime>10/25/2017 15:59:14</publishTime>
+    </File>
+    <File Include="Views/Alunnis/Edit.cshtml">
+      <publishTime>10/25/2017 15:59:15</publishTime>
+    </File>
+    <File Include="Views/Alunnis/Index.cshtml">
+      <publishTime>10/25/2017 16:05:34</publishTime>
+    </File>
     <File Include="Views/Cases/Content.cshtml">
-      <publishTime>10/24/2017 12:59:09</publishTime>
+      <publishTime>01/08/2018 16:47:44</publishTime>
     </File>
     <File Include="Views/Cases/Create.cshtml">
       <publishTime>09/29/2017 08:11:40</publishTime>
@@ -776,7 +806,10 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>09/29/2017 07:54:25</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>10/24/2017 10:48:17</publishTime>
+      <publishTime>03/11/2017 08:28:34</publishTime>
+    </File>
+    <File Include="Views/Home/Regolamento.cshtml">
+      <publishTime>10/27/2017 16:59:40</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>09/29/2017 07:54:43</publishTime>
@@ -800,10 +833,10 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>10/03/2017 15:41:23</publishTime>
     </File>
     <File Include="Views/Punteggis/AssegnaI.cshtml">
-      <publishTime>10/04/2017 11:40:40</publishTime>
+      <publishTime>01/08/2018 16:36:28</publishTime>
     </File>
     <File Include="Views/Punteggis/AssegnaTornei.cshtml">
-      <publishTime>10/23/2017 16:20:20</publishTime>
+      <publishTime>10/24/2017 12:49:03</publishTime>
     </File>
     <File Include="Views/Punteggis/Create.cshtml">
       <publishTime>03/10/2017 12:44:53</publishTime>
@@ -829,11 +862,14 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
     <File Include="Views/Punteggis/Prof.cshtml">
       <publishTime>10/20/2017 17:47:29</publishTime>
     </File>
+    <File Include="Views/Punteggis/Statistiche.cshtml">
+      <publishTime>01/09/2018 17:20:10</publishTime>
+    </File>
     <File Include="Views/Quesitis/Assegna.cshtml">
       <publishTime>10/23/2017 16:12:37</publishTime>
     </File>
     <File Include="Views/Quesitis/Create.cshtml">
-      <publishTime>10/23/2017 09:32:51</publishTime>
+      <publishTime>10/23/2017 17:06:09</publishTime>
     </File>
     <File Include="Views/Quesitis/Delete.cshtml">
       <publishTime>10/22/2017 15:52:02</publishTime>
@@ -851,7 +887,7 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>10/23/2017 15:53:56</publishTime>
     </File>
     <File Include="Views/Quesitis/Risposta.cshtml">
-      <publishTime>10/23/2017 15:56:57</publishTime>
+      <publishTime>10/24/2017 11:46:50</publishTime>
     </File>
     <File Include="Views/RolesAdmin/Create.cshtml">
       <publishTime>09/29/2017 11:26:31</publishTime>
@@ -875,10 +911,10 @@ modificando il file MSBuild. Per altre informazioni su questo argomento, vedere 
       <publishTime>09/29/2017 07:54:43</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/21/2017 09:48:40</publishTime>
+      <publishTime>11/03/2017 10:08:12</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
-      <publishTime>10/23/2017 11:26:37</publishTime>
+      <publishTime>01/09/2018 09:10:31</publishTime>
     </File>
     <File Include="Views/UsersAdmin/Create.cshtml">
       <publishTime>03/10/2017 09:17:35</publishTime>

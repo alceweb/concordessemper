@@ -29,15 +29,14 @@
 <div id="success">
     @if (Model.DataF == Model.DataI)
     {
-        <h2>Complimenti</h2>
-        <h4 class="alert alert-success">hai risposto giusto a tutte le domande della gara N. @Model.Quesito_Id</h4>
+        <h2></h2>
+        <h4 class="alert alert-success">Complimenti. Hai risposto giusto a tutte le domande della gara N. @Model.Quesito_Id</h4>
         <p>Adesso puoi assegnare alla tua casa @Model.Valore punti</p>
         <a href="@Url.Action("Assegna", "Quesitis", new {id = Model.Quesito_Id })" class="btn btn-primary">Prosegui</a>
     }
     else
     {
-        <h2>Complimenti</h2>
-        <h4>hai risposto giusto a tutte le domande del torneo N. @Model.Quesito_Id</h4>
+        <h4>Complimenti. Hai risposto giusto a tutte le domande del torneo N. @Model.Quesito_Id</h4>
         <h4 class="alert alert-danger">Purtroppo qualcuno ha già risposto esattamente a tutte le domande e si è già accaparato i @Model.Valore punti...</h4>
         <h4>Riprova con la prossima gara</h4>
     }

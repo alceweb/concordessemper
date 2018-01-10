@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ConcordesSemper.Models.Alunni>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Casa.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cognome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Casa.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cognome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Alunno_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Alunno_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Alunno_Id })
+        </td>
+    </tr>
+}
+
+</table>
+@section Scripts{
+
+    <script src="~/Scripts/jquery.filtertable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('table').filterTable();
+        });
+    </script>
+}

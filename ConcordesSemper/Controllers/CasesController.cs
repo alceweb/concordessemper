@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConcordesSemper.Models;
+using Newtonsoft.Json;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace ConcordesSemper.Controllers
@@ -14,6 +15,7 @@ namespace ConcordesSemper.Controllers
     public class CasesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        JsonSerializerSettings _jsonSetting = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore, DateFormatString = "dd/MMM/yy" };
 
 
         // GET: Cases
@@ -34,6 +36,13 @@ namespace ConcordesSemper.Controllers
             {
                 return HttpNotFound();
             }
+            //DataView per grafico giornaliero 
+            ViewBag.DataPoints = JsonConvert.SerializeObject(db.Punteggis
+                .Where(p => p.Casa_Id == id)
+                .GroupBy(d => DbFunctions.TruncateTime(d.Data))
+                .Select(s => new { x = s.Key, y = s.Sum(p => p.Comportamento + p.Dimenticanze + p.OeP + p.Varie + p.GrandiG) })
+                .OrderBy(s=>s.x)
+                .ToList(), _jsonSetting);
             //punteggioTotOggi generale casa
             var punteggio = db.Punteggis.Where(p => p.Casa_Id == id).OrderByDescending(p=>p.Data).ToList();
             ViewBag.Punteggio = punteggio;

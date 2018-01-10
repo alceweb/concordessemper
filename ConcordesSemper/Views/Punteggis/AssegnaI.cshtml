@@ -56,6 +56,37 @@
 
         </h2>
     </div>
+    <hr class="hr1" />
+    //Manuale
+    <h3 class="text-success text-center">Manuale</h3>
+    <div class="row">
+        <div class="col-md-5 text-center">
+            <h3>
+                Inserisci manualmente i punti e la motivazione!
+            </h3>
+        </div>
+        <div class="col-md-2 text-center">
+            @Html.TextBoxFor(v => v.Varie, new { id = "Txt-M", @class = "form-control-c input-xlg text-center", @Value = "0" })
+            <input id="Btn-M-X" class="btn btn-xs btn-warning" type="button" value="X" />
+        </div>
+        <div class="col-md-5 text-center">
+            @Html.TextAreaFor(m => m.Motivazione, new { id = "Txt-M-M", @class = "form-control-c text-center", placeholder = "Motivo..." })
+            <input id="Btn-M-M-X" class="btn btn-xs btn-warning" type="button" value="X" />
+        </div>
+    </div>
+
+    <hr />
+    <div class="text-center">
+        <h2>
+            <input id="Submit1" class="btn btn-xlg btn-primary" type="submit" value="Conferma" />
+
+        </h2>
+        <h2>
+            @Html.ActionLink("Annulla", "Index", "Home", null, new { @class = "btn btn-xlg btn-warning" })
+
+
+        </h2>
+    </div>
 }
 <hr class="hr1" />
 

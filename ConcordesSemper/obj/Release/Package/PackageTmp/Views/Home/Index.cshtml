@@ -52,11 +52,20 @@
                     }
 
                         <div class="h2">
-                            <span class="txt-ombra">@item.punti</span>
                             @if (User.IsInRole("Admin"))
                             {
 
                                 <a href="@Url.Action("Assegna", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                            }
+                            @if (User.IsInRole("Insegnante"))
+                            {
+
+                                <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                            }
+                          <span class="txt-ombra">@item.punti</span>
+                            @if (User.IsInRole("Admin"))
+                            {
+
                                 <!-- Button trigger modal Alunni -->
                                 <a href="#alunno" data-toggle="modal">
                                     <span class="fa fa-user"></span>
@@ -67,7 +76,6 @@
                             @if (User.IsInRole("Insegnante"))
                             {
 
-                                <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
                                 <!-- Button trigger modal Alunni -->
                                 <a href="#alunno" data-toggle="modal"><span class="fa fa-user"></span>
                                     
@@ -149,10 +157,18 @@
                     }
 
                     <div class="h2">
-                        <span class="txt-ombra">@item.punti</span>
                         @if (User.IsInRole("Admin"))
                         {
                             <a href="@Url.Action("Assegna", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                        }
+                        @if (User.IsInRole("Insegnante"))
+                        {
+
+                            <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
+                        }
+                       <span class="txt-ombra">@item.punti</span>
+                        @if (User.IsInRole("Admin"))
+                        {
                                  <!-- Button trigger modal Alunni -->
                             <a href="#alunno" data-toggle="modal">
                                 <span class="fa fa-user"></span>
@@ -163,7 +179,6 @@
                         @if (User.IsInRole("Insegnante"))
                         {
 
-                            <a href="@Url.Action("AssegnaI", "Punteggis", new {casa = @item1.Casa_Id})"><span class="fa fa-plus-circle"></span></a>
                                  <!-- Button trigger modal Alunni -->
                             <a href="#alunno" data-toggle="modal">
                                 <span class="fa fa-user"></span>
@@ -178,10 +193,10 @@
 
     </tr>
 </table><hr class="hr1" />
-
 <div class="text-center">
-    <img class="img-responsive" src="~/Content/Immagini/ConcordesVert.png" />
+    <a href="@Url.Action("Regolamento", "Home")"><img class="img-responsive" src="~/Content/Immagini/ConcordesVert.png" /></a>
 </div>
+
 @section Scripts{
 
     <script src="~/Scripts/jquery.filtertable.min.js"></script>

@@ -25,8 +25,9 @@ namespace ConcordesSemper.Controllers
             a.Sum(p => p.Punteggis.Sum(s => s.Varie)) +
             a.Sum(p => p.Punteggis.Sum(s => s.GrandiG)) +
             a.Sum(p => p.Punteggis.Sum(s => s.OeP))
-            }).
-            OrderByDescending(o => o.punti).Max(o=>o.punti);
+            })
+            .OrderByDescending(o => o.punti)
+            .Max(o=>o.punti);
             ViewBag.AC = casate.Where(c => c.Casa_Id < 3);
             ViewBag.FF = casate.Where(c => c.Casa_Id >= 3);
             ViewBag.Punti = punti;
@@ -46,6 +47,11 @@ namespace ConcordesSemper.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Regolamento()
+        {
             return View();
         }
 

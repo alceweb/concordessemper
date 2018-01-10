@@ -2,6 +2,8 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #f1f1f1;
+    background-image: url('Immagini/Sfondo.jpg');
+    background-attachment: fixed;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -62,6 +64,9 @@ textarea {
         top: 0px;
         height: 150px;
     }
+.img-casa-statistiche{
+    height: 70px;
+}
 @media (max-width: 1270px) {
     .img-stemma-menu {
         height: 120px;

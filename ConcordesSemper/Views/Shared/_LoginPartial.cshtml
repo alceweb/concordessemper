@@ -8,8 +8,12 @@
             @if (User.IsInRole("Admin"))
             {
                 <a href="@Url.Action("Index", "RolesAdmin")" class="fa fa-tags fa-2x text-success" title="Gestione ruoli"></a>
-               <a href="@Url.Action("Register", "Account")" class="fa fa-user-plus fa-2x text-success" title="Registra utente"></a>
-                 <a href="@Url.Action("Index", "UsersAdmin")" class="fa fa-users fa-2x text-success" title="Gestione utente"></a>
+                <a href="@Url.Action("Index", "UsersAdmin")" class="fa fa-users fa-2x text-success" title="Gestione utente"></a>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Preside"))
+            {
+                <a href="@Url.Action("Statistiche", "Punteggis")" class="fa fa-tachometer fa-2x text-success" title="Statistiche"></a>
+
             }
             <a href="@Url.Action("Index", "Quesitis")"><img class="img-tornei-menu" src="~/Content/Immagini/GonfaloneP.png" /></a>
 
@@ -23,6 +27,7 @@ else
 {
     <div class="pull-right">
         @*<li>@Html.ActionLink("Registrazione", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <a href="@Url.Action("Regolamento", "Home")"><span class="fa fa-info-circle fa-2x"></span></a>
         @Html.ActionLink(" ", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "fa fa-sign-in fa-2x" })
     </div>
 }
